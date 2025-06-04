@@ -1,0 +1,48 @@
+{# templates/tp1_ex1_q1/date_heure.html.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Date et Heure</title>
+</head>
+<body>
+    <h1>Date et Heure </h1>
+
+    <p>Nous sommes le : <strong>{{ datetime }}</strong></p>
+</body>
+
+
+<button id="btnAge">Cliquez ici pour calculer votre âge</button>
+     <p id="id_Age"></p>
+     <p id="monParagraphe" onmouseover="survol()" onmouseout="retablir()">Ceci est un paragraphe.</p>
+    
+
+<script>
+    function survol() {
+      let p = document.getElementById("monParagraphe");
+      p.style.fontSize = "30px";
+      p.style.color = "red";
+      p.style.fontStyle = "italic";
+    }
+
+    function retablir() {
+      let p = document.getElementById("monParagraphe");
+      p.style.fontSize = "";
+      p.style.color = "";
+      p.style.fontStyle = "";
+    }
+  </script>
+
+
+#onmouseover = quand la souris survole.
+
+#onmouseout = quand la souris quitte.
+
+#style permet de modifier directement le CSS en JavaScript.
+
+
+ </body>
+ </html>
+ {% endblock %}
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue !</h1>
+
+    <form method="get" action="{{ path('bonjour') }}">
+        <label for="prenom">Prénom :</label><br>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+
+        <label for="nom">Nom :</label><br>
+        <input type="text" id="nom" name="nom" required><br><br>
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <button onclick="calculerAge()">Cliquez ici pour calculer votre âge</button>
+    <p id="id_Age"></p>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function calculerAge() {
+            let anneeNaissance = prompt("Veuillez entrer votre année de naissance :");
+            let anneeActuelle = new Date().getFullYear();
+
+            if (isNaN(anneeNaissance) || anneeNaissance === null || anneeNaissance.trim() === "") {
+                alert("Veuillez entrer une valeur numérique !");
+                return;
+            }
+
+            let age = anneeActuelle - parseInt(anneeNaissance);
+            document.getElementById("id_Age").innerText = "Votre âge est : " + age + " ans.";
+        }
+    </script>
+{% endblock %}

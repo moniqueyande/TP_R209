@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour{% endblock %}
+
+{% block body %}
+    <h1>Bonjour {{ prenom }} {{ nom }} !</h1>
+    <p>Nous sommes le : <strong>{{ datetime }}</strong></p>
+
+<p id="monParagraphe" onmouseover="survol()" onmouseout="retablir()">
+ Mon paragraghe.
+
+ <ul id="listeBUT">
+  <li>BUT RT</li>
+  <li>BUT GIM</li>
+</ul>
+
+<button onclick="ajouterElement()">Ajouter un BUT</button>
+<button onclick="supprimerDernier()">Supprimer le dernier BUT</button>
+
+</p>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+function survol() {
+  let p = document.getElementById("monParagraphe");
+  p.style.fontSize = "30px";
+  p.style.color = "red";
+  p.style.fontStyle = "italic";
+}
+
+function retablir() {
+  let p = document.getElementById("monParagraphe");
+  p.style.fontSize = "";
+  p.style.color = "";
+  p.style.fontStyle = "";
+}
+</script>
+<script>
+function ajouterElement() {
+  let nouvelleEntree = prompt("Entrez un nouveau BUT à ajouter :");
+  if (nouvelleEntree) {
+    let li = document.createElement("li");
+    li.innerText = nouvelleEntree;
+    document.getElementById("listeBUT").appendChild(li);
+  }
+}
+
+function supprimerDernier() {
+  let liste = document.getElementById("listeBUT");
+  if (liste.lastChild) {
+    liste.removeChild(liste.lastChild);
+  }
+}
+</script>
+
+{% endblock %}
